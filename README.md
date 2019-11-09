@@ -10,17 +10,18 @@ Please check Dockerfile for more details.
 ## Prerequirement  
 - Docker
 
-## Build Dockerfile
+## 1. Build Dockerfile
 ```bash
 $ make build
 ```
 
-## Run the Docker image
+## 2. Run the Docker image
 ```bash
 $ make run
 ```
 
 ### Change a mount place
+Initially, `make run` command mount `./src` directory.
 If you want to change a mount place, please modify **Makefile**.
 ```Makefile
 SOURCEDIR = ${PWD}/src
