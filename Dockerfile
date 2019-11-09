@@ -27,7 +27,7 @@ RUN apt-get update -q && apt-get install -qy clang clang-format && \
 
 # Install Python3
 RUN apt-get update -q && apt-get install -qy python3 python3-pip && \
-    echo "alias python=python3\nalias pip=pip3" >> ~/.bashrc && \
+    echo -e "\nalias python=python3\nalias pip=pip3" >> ~/.bashrc && \
     apt-get clean -q && rm -rf /var/lib/apt/lists/*
 
 # Install Python Library
