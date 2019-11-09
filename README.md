@@ -10,6 +10,9 @@ Please check Dockerfile for more details.
 ## Prerequirement  
 - Docker
 
+## Specify python library
+Before build Dockerfile, you have to specify python librarys which you want to install in **requirements.txt**.
+
 ## 1. Build Dockerfile
 ```bash
 $ make build
@@ -21,11 +24,9 @@ $ make run
 ```
 
 ### Change a mount place
-Initially, `make run` command mount `./src` directory.
+Initially, `make run` command mounts `./src` directory.
 If you want to change a mount place, please modify **Makefile**.
 ```Makefile
 SOURCEDIR = ${PWD}/src
 ```
 
-### Install python library
-Before build Dockerfile, you have to specify python librarys which you want to install in **requirements.txt**.
