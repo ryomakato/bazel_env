@@ -16,7 +16,7 @@ fi
 # let user use su without password
 sudo usermod -aG wheel $USER
 
-# for Permission problem of bazel
+# for permission problem on bazel
 sudo mkdir /.cache
 sudo chown $(id -u):$(id -g) /.cache
 
