@@ -36,10 +36,11 @@ ADD ./requirements.txt /tmp/
 RUN  pip install -r /tmp/requirements.txt
 
 # Install Bazel.
+ARG BAZEL_VERSION=1.1.0
 RUN apt-get update -q && apt-get install -qy unzip && \
     apt-get clean -q && rm -rf /var/lib/apt/lists/* && \
     curl -L -o installer \
-    "https://github.com/bazelbuild/bazel/releases/download/1.1.0/bazel-1.1.0-installer-linux-x86_64.sh" && \
+    "https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh" && \
     chmod +x installer && ./installer && rm ./installer && \
     echo 'source /usr/local/lib/bazel/bin/bazel-complete.bash' > /etc/profile.d/99-bazel-complete.sh && \
     chmod +x /etc/profile.d/99-bazel-complete.sh
