@@ -44,6 +44,10 @@ RUN apt-get update -q && apt-get install -qy unzip && \
     echo 'source /usr/local/lib/bazel/bin/bazel-complete.bash' > /etc/profile.d/99-bazel-complete.sh && \
     chmod +x /etc/profile.d/99-bazel-complete.sh
 
+# Make wheel user
+RUN sed -i -e "s/# auth       sufficient pam_wheel.so trust/auth       sufficient pam_wheel.so trust/g" /etc/pam.d/su && \
+    addgroup wheel
+
 # Make user by entrypoint.sh
 ENV USER docker
 RUN echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \

@@ -13,6 +13,9 @@ if [ x"$USER_ID" != x"0" ]; then
     useradd -d /home/$USER -m -s /bin/bash -u $USER_ID -g $GROUP_ID $USER
 fi
 
+# let user use su without password
+sudo usermod -aG wheel $USER
+
 # return back permition
 sudo chmod u-s /usr/sbin/useradd
 sudo chmod u-s /usr/sbin/groupadd
