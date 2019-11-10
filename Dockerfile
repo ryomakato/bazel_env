@@ -33,7 +33,7 @@ RUN apt-get update -q && apt-get install -qy python3 python3-pip && \
 
 # Install Python Library
 ADD ./requirements.txt /tmp/
-RUN  pip3 install -r /tmp/requirements.txt
+RUN  pip install -r /tmp/requirements.txt
 
 # Install Bazel.
 RUN apt-get update -q && apt-get install -qy unzip && \
@@ -46,6 +46,7 @@ RUN apt-get update -q && apt-get install -qy unzip && \
 
 # Make wheel user
 RUN sed -i -e "s/# auth       sufficient pam_wheel.so trust/auth       sufficient pam_wheel.so trust/g" /etc/pam.d/su && \
+    echo "wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     addgroup wheel
 
 # Make user by entrypoint.sh

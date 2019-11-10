@@ -16,6 +16,10 @@ fi
 # let user use su without password
 sudo usermod -aG wheel $USER
 
+# for Permission problem of bazel
+sudo mkdir /.cache
+sudo chown $(id -u):$(id -g) /.cache
+
 # return back permition
 sudo chmod u-s /usr/sbin/useradd
 sudo chmod u-s /usr/sbin/groupadd
